@@ -1,0 +1,114 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.calculator-btn {
+  transition: all 0.2s ease;
+  font-size: 1.75rem;
+}
+.calculator-btn:hover {
+  transform: translateY(-2px);
+}
+.calculator-btn:active {
+  transform: translateY(1px);
+}
+.dark {
+  background-color: #1a202c;
+  color: #f7fafc;
+}
+.history-item {
+  transition: all 0.3s ease;
+}
+.history-item:hover {
+  background-color: rgba(99, 102, 241, 0.1);
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 76px;
+  height: 38px;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #4B5563;
+  transition: .4s;
+  border-radius: 34px;
+}
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  z-index: 2;
+}
+input:checked + .toggle-slider {
+  background-color: #6366F1;
+}
+input:checked + .toggle-slider:before {
+  transform: translateX(38px);
+}
+.expression-display {
+  min-height: 28px;
+  font-size: 18px;
+  opacity: 0.7;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.main-display {
+  font-size: 3rem;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.new-history-item {
+  animation: fadeIn 0.3s ease-out;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+.erase-animation {
+  animation: pulse 0.2s ease-in-out;
+}
+@media (max-width: 360px) {
+  .toggle-switch {
+    width: 60px;
+    height: 30px;
+  }
+  .toggle-slider:before {
+    height: 22px;
+    width: 22px;
+  }
+  input:checked + .toggle-slider:before {
+    transform: translateX(30px);
+  }
+}
